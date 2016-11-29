@@ -54,8 +54,16 @@ This file contains a number of front-end interview questions that can be used wh
 
 * What's the difference between full standards mode, almost standards mode and quirks mode?
 
+In full standards mode, the behavior strictly follows HTML and CSS specification. In almost standards mode, there are a few number of quirks implemented. In quirks mode, non-standard behaviors are used for the sake of backward compatibility with websites (designed for Navigator 4 and IE 5) that were built before the widespread adoption of web standards.
+
 * What's the difference between HTML and XHTML?
+
+HTML can travel over the network to a browser either in HTML syntax or an XML syntax called XHTML. The MIME type for HTML is `text/html`, whereas for XHTML is `application/xhtml+xml`.
+
 * Are there any problems with serving pages as `application/xhtml+xml`?
+
+Internet Explorer 8 and older browsers will show a download dialog box for unknown file types when they see an XHTML document with the correct XHTML MIME type. Many popular JavaScript libraries and developer tools have limited or no support for XHTML.
+
 * How do you serve a page with content in multiple languages?
 * What kind of things must you be wary of when design or developing for multilingual sites?
 * What are `data-` attributes good for?
