@@ -77,10 +77,33 @@ Internet Explorer 8 and older browsers will show a download dialog box for unkno
 #### CSS Questions:
 
 * What is the difference between classes and IDs in CSS?
+
+Classes can be applied to multiple DOM elements on the webpage, whereas there could be only one element with a specific ID.
+
 * What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
+
+http://stackoverflow.com/questions/6887336/what-is-the-difference-between-normalize-css-and-reset-css
+
 * Describe Floats and how they work.
+
+It is a CSS property that specifies an element should be placed along the left or right side of its container, where text and inline elements will wrap around it. A floated element is taken out of the normal flow of the document. It is shifted to the left or right until it touches the edge of its containing box or another floated element.
+
 * Describe z-index and how stacking context is formed.
+
+The z-index property specifies the z-order of a positioned element and its descendants. When elements overlap, z-order determines which one covers the other. An element with a larger z-index generally covers an element with a lower one.
+
+Stacking context is the three-dimentional conceptualization of HTML elements along an imaginary z-axis relative to the user who is assumed to be facing the viewport or the webpage. Positioning and assigning a z-index value to an HTML element creates a stacking context, (as does assining non-full opacity). Stacking contexts can be contained in other stacking contexts, and together create a hierarchy of stacking contexts. Eaching stacking context is self-contained: after the element's
+contents are stacked, the whole element is considered in the stacking order of the parent stacking context.
+
 * Describe BFC(Block Formatting Context) and how it works.
+
+A block formatting context is a part of a visual CSS rendering of a web page. it is the region in which the layout of block boxes occurs and in which floats interact with each other. A block formatting context is a box that satisfies at least one of the following:
+
+- the value of `float` is not `none`.
+- the used value of `overflow` is not `visible`.
+- the value of `display` is `table-cell`, `table-caption`, or `inline-block`.
+- the value of `position` is neither `static` nor `relative`.
+
 * What are the various clearing techniques and which is appropriate for what context?
 * Explain CSS sprites, and how you would implement them on a page or site.
 * What are your favourite image replacement techniques and which do you use when?
