@@ -121,11 +121,84 @@ A block formatting context is a part of a visual CSS rendering of a web page. it
 * How would you implement a web design comp that uses non-standard fonts?
 * Explain how a browser determines what elements match a CSS selector.
 * Describe pseudo-elements and discuss what they are used for.
+
+Pseudo-elements are added to selectors to style certain parts of a element. For example, ::first-line targets only the first line of an element specified by the selector.
+
 * Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models.
 * What does ```* { box-sizing: border-box; }``` do? What are its advantages?
+
+The `width` and `height` properties of an element include content, padding and border, but not margin. Advantage?
+
 * List as many values for the display property that you can remember.
+
+```css
+display: none;
+
+display: inline;
+display: block;
+display: inline-block;
+display: contents;
+display: list-item;
+display: inline-list-item;
+display: table;
+display: inline-table;
+display: table-cell;
+display: table-column;
+display: table-column-group;
+display: table-footer-group;
+display: table-header-group;
+display: table-row;
+display: table-row-group;
+display: table-caption;
+display: flex;
+display: inline-flex;
+display: grid;
+display: inline-grid;
+display: subgrid;
+display: ruby;
+display: ruby-base;
+display: ruby-text;
+display: ruby-base-container;
+display: ruby-text-container;
+display: run-in;
+
+/* Global values */
+display: inherit;
+display: initial;
+display: unset;
+```
+
 * What's the difference between inline and inline-block?
+
+Inline elements:
+
+- respect left & right margins and padding, but not top & bottom
+- cannot have a width and height set
+- allow other elements to sit to their left and right.
+
+Inline-block elements:
+
+- allow other elements to sit to their left and right
+- respect top & bottom margins and padding
+- respect height and width
+
+Block elements:
+
+- respect all of those
+- force a line break after the block element
+
+http://stackoverflow.com/questions/9189810/css-display-inline-vs-inline-block
+
 * What's the difference between a relative, fixed, absolute and statically positioned element?
+
+static: This keyword lets the element use the normal behavior, that is it is laid out in its current position in the flow.  The top, right, bottom, left and z-index properties do not apply.
+
+relative: This keyword lays out all elements as though the element were not positioned, and then adjust the element's position, without changing layout (and thus leaving a gap for the element where it would have been had it not been positioned). The effect of position:relative on table-*-group, table-row, table-column, table-cell, and table-caption elements is undefined.
+
+absolute: Do not leave space for the element. Instead, position it at a specified position relative to its closest positioned ancestor if any, or otherwise relative to the initial containing block. Absolutely positioned boxes can have margins, and they do not collapse with any other margins.
+
+fixed: Do not leave space for the element. Instead, position it at a specified position relative to the screen's viewport and don't move it when scrolled. When printing, position it at that fixed position on every page. This value always create a new stacking context. When an ancestor has the transform property set to something different than none then this ancestor is used as container instead of the viewport (see CSS Transforms Spec).
+
 * The 'C' in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?
 * What existing CSS frameworks have you used locally, or in production? How would you change/improve them?
 * Have you played around with the new CSS Flexbox or Grid specs?
@@ -136,13 +209,28 @@ A block formatting context is a part of a visual CSS rendering of a web page. it
 #### JS Questions:
 
 * Explain event delegation
+
+Event delegation allows us to bind an event handler to a single parent element, and that handler will get executed whenever the event occurs on any of its child nodes. This is achieved by event bubbling (aka event propagation). The benefit is that with event delegation, the number of event bindings can be drastically decreased by moving them to a common parent element, as a result, the total memory used by event listeners goes down.
+
+http://stackoverflow.com/questions/1687296/what-is-dom-event-delegation
+
 * Explain how `this` works in JavaScript
 * Explain how prototypal inheritance works
 * What do you think of AMD vs CommonJS?
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   * What needs to be changed to properly make it an IIFE?
+
+This is not an immediately invoked function. To make it an IIFE, wrap the function with `()` so it looks like: `(function foo(){})()`. Alternatively, `+function foo(){}()` will also work.
+
 * What's the difference between a variable that is: `null`, `undefined` or undeclared?
   * How would you go about checking for any of these states?
+
+A variable is undeclared when it does not use the `var` keyword. It gets created on the global object, thus it operates in a different space as the declared variables. It will not work in strict mode.
+
+A variable is `undefined` if it hasn't been defined yet.
+
+`null` is a variable that is defined to have a null value, which is an object.
+
 * What is a closure, and how/why would you use one?
 * What's a typical use case for anonymous functions?
 * How do you organize your code? (module pattern, classical inheritance?)
