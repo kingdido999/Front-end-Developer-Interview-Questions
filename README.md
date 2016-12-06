@@ -215,7 +215,34 @@ Event delegation allows us to bind an event handler to a single parent element, 
 http://stackoverflow.com/questions/1687296/what-is-dom-event-delegation
 
 * Explain how `this` works in JavaScript
+
+The value of `this` is determined by how a function is called.
+
+In the global context, `this` refers to the global object, whether is strict mode or not.
+
+In the function context:
+
+- non-strict mode: `this` refers to global object.
+- strict mode: if `this` was not defined by the execution context, it remains undefined.
+
+Use `call` or `apply` to pass the value of `this` from one context to another. Or use `bind` so a new function with binded `this` can be called later.
+
+In arrow functions, `this` is set lexically, i.e., it's set to the value of the enclosing execution context's `this`.
+
+As an object method, `this` is set to the object the method is called on.
+
+As a constructor, `this` is set to the new object being constructed.
+
+As a DOM event hanlder, `this` is set to the element the event fired from.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
+
 * Explain how prototypal inheritance works
+
+Every JavaScript object has a link to a prototype object. When trying to access a property of an object, the property will not only be sought on the prototype of the object, the prototype of the prototype, and so on until either a property with a matching name is found or the end of the prototype chain if reached.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+
 * What do you think of AMD vs CommonJS?
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   * What needs to be changed to properly make it an IIFE?
@@ -232,7 +259,19 @@ A variable is `undefined` if it hasn't been defined yet.
 `null` is a variable that is defined to have a null value, which is an object.
 
 * What is a closure, and how/why would you use one?
+
+A closure is a function that remembers the environment in which they were created. The environment consists of any local variables that were in-scope at the time that the closure was created. A closure lets you associate some data (the environment) with a function that operates on that data. 
+
+Use cases:
+- Use a closure anywhere that you might normally use an object with only a single method.
+- Emulate private methods using closures, which is also known as the module pattern.
+
 * What's a typical use case for anonymous functions?
+
+- The function is only ever called in one place.
+- Inline functions that can access variables in the parent scopes.
+- Closure.
+
 * How do you organize your code? (module pattern, classical inheritance?)
 * What's the difference between host objects and native objects?
 
@@ -259,8 +298,14 @@ To include third party code. Since `document.write()` is always available, it is
 * Have you ever used JavaScript templating?
   * If so, what libraries have you used?
 * Explain "hoisting".
+
+Because variable declarations are processed before any code is executed, declaring a variable anywhere in the code is equivalent to declaring it at the top. This also means that a variable can appear to be used before it's declared.
+
 * Describe event bubbling.
 * What's the difference between an "attribute" and a "property"?
+
+Attribute is in the HTML itself (of type string), whereas property belongs to DOM objects, which can be different types.
+
 * Why is extending built-in JavaScript objects not a good idea?
 * Difference between document load event and document DOMContentLoaded event?
 * What is the difference between `==` and `===`?
