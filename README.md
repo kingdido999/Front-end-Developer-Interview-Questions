@@ -235,10 +235,23 @@ A variable is `undefined` if it hasn't been defined yet.
 * What's a typical use case for anonymous functions?
 * How do you organize your code? (module pattern, classical inheritance?)
 * What's the difference between host objects and native objects?
+
+Host object: supplied by the host environment to complete the execution environment of ECMAScript. For example for browser environment, `window`, `document`, `location`.
+Native object: object in an ECMAScript implementation whose semantics are fully defined by this specification rather than by the host environment. For example, `Object`, `Date`, `indexOf`, `replace`...
+
 * Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
 * What's the difference between `.call` and `.apply`?
+
+They both call a function with a given `this` value and arguments. `.call` takes a list of arguments whereas `.apply` takes an array of arguments.
+
 * Explain `Function.prototype.bind`.
+
+Creates a new function that, when called, set its `this` keyword set to the provided value.
+
 * When would you use `document.write()`?
+
+To include third party code. Since `document.write()` is always available, it is a good choice for third party vendors to use it to add their scripts.
+
 * What's the difference between feature detection, feature inference, and using the UA string?
 * Explain Ajax in as much detail as possible.
 * What are the advantages and disadvantages of using Ajax?
@@ -255,12 +268,38 @@ A variable is `undefined` if it hasn't been defined yet.
 * Make this work:
 ```javascript
 duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
+
+function duplicate(arr) {
+    return arr.concat(arr)
+}
 ```
 * Why is it called a Ternary expression, what does the word "Ternary" indicate?
 * What is `"use strict";`? what are the advantages and disadvantages to using it?
+
+It is a way to opt in to a restricted variant of JavaScript.
+
+- Eliminates some JavaScript silent errors by changing them to throw errors. 
+- Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode can sometimes be made to run faster than identical code that's not strict mode.
+- Prohibits some syntax likely to be defined in future versions of ECMAScript.
+
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
+
+```
+for (var i = 0; i <= 100; i++) {
+    var multiplesOfThree = i % 3
+    var multiplesOfFive = i % 5
+
+    if (multiplesOfThree) console.log("fizz")
+    if (multiplesOfFive) console.log("buzz")
+    if (multiplesOfThree & multiplesOfFive) console.log("fizzbuzz")
+}
+```
+
 * Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
 * Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?
+
+It is used to detect a fully-loaded page, which means it has to wait for all stylesheets, images, and subframes to finish loading. We can use `DOMContentLoaded` to detect that the DOM has been completely loaded without having to wait for stylesheets, images, and subframes to finish loading.
+
 * Explain what a single page app is and how to make one SEO-friendly.
 * What is the extent of your experience with Promises and/or their polyfills?
 * What are the pros and cons of using Promises instead of callbacks?
@@ -269,6 +308,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 * What language constructions do you use for iterating over object properties and array items?
 * Explain the difference between mutable and immutable objects.
   * What is an example of an immutable object in JavaScript?
+    String and Number object.
   * What are the pros and cons of immutability?
   * How can you achieve immutability in your own code?
 * Explain the difference between synchronous and asynchronous functions.
