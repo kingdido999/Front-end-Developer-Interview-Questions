@@ -200,6 +200,16 @@ absolute: Do not leave space for the element. Instead, position it at a specifie
 fixed: Do not leave space for the element. Instead, position it at a specified position relative to the screen's viewport and don't move it when scrolled. When printing, position it at that fixed position on every page. This value always create a new stacking context. When an ancestor has the transform property set to something different than none then this ancestor is used as container instead of the viewport (see CSS Transforms Spec).
 
 * The 'C' in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?
+
+The following list of selector types increases by specificity:
+
+  0. Type selectors (e.g., h1) and pseudo-elements (e.g., :before).
+  1. Class selectors (e.g., .example), attributes selectors (e.g., [type="radio"]) and pseudo-classes (e.g., :hover).
+ID selectors (e.g., #example).
+  2. Universal selector (*), combinators (+, >, ~, ' ') and negation pseudo-class (:not()) have no effect on specificity. (The selectors declared inside :not() do, however.)
+
+Inline styles added to an element (e.g., style="font-weight:bold") always overwrite any styles in external stylesheets, and thus can be thought of as having the highest specificity. When an `!important` rule is used on a style declaration, this declaration overrides any other declarations.
+
 * What existing CSS frameworks have you used locally, or in production? How would you change/improve them?
 * Have you played around with the new CSS Flexbox or Grid specs?
 * How is responsive design different from adaptive design?
