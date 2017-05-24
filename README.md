@@ -67,11 +67,43 @@ Internet Explorer 8 and older browsers will show a download dialog box for unkno
 * How do you serve a page with content in multiple languages?
 * What kind of things must you be wary of when design or developing for multilingual sites?
 * What are `data-` attributes good for?
+
+For custom attributes.
+
 * Consider HTML5 as an open web platform. What are the building blocks of HTML5?
 * Describe the difference between a `cookie`, `sessionStorage` and `localStorage`.
+
+All of them are used to store data on the client side.
+
+cookie: stores data that has to be sent back to the server with subsequent requests. Its expiration varies based on the type and the expiration duration can be set from either server-side or client-side (normally from server-side).
+
+localStorage: stores data with no expiration date, and gets cleared only through JavaScript, or clearing the Browser Cache / Locally Stored Data
+
+sessionStorage: similar to localStorage but expires when the browser closed (not the tab).
+
+Cookies are primarily for server-side reading (can also be read on client-side), localStorage and sessionStorage can only be read on client-side.
+
 * Describe the difference between `<script>`, `<script async>` and `<script defer>`.
+
+`<script>` will be executed immediately, before the browser continues to parse the page. 
+`<script async>` will be executed asynchronously. 
+`<script defer>` will be executed after the document has been parsed, but before firing DOMContentLoaded.
+
 * Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`? Do you know any exceptions?
+
+Style sheets are linked in the <head> so that the browser can style the HTML and render it as it goes. If you put the style information at the bottom of the document the browser will have to restyle and render the whole document from the top again.
+
+`<script>`s are placed before end of body because so it won't block page parsing.
+
 * What is progressive rendering?
+
+Progressive rendering is the name given to techniques used to render content for display as quickly as possible.
+
+Examples of such techniques :
+
+- Lazy loading of images where (typically) some javascript will load an image when it comes into the browsers viewport instead of loading all images at page load.
+- Prioritizing visible content (or above the fold rendering) where you include only the minimum css/content/scripts necessary for the amount of page that would be rendered in the users browser first to display as quickly as possible, you can then use deferred javascript (domready/load) to load in other resources and content.
+
 * Have you used different HTML templating languages before?
 
 #### CSS Questions:
