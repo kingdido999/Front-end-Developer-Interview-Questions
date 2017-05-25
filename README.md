@@ -302,7 +302,7 @@ A variable is `undefined` if it hasn't been defined yet.
 
 * What is a closure, and how/why would you use one?
 
-A closure is a function that remembers the environment in which they were created. The environment consists of any local variables that were in-scope at the time that the closure was created. A closure lets you associate some data (the environment) with a function that operates on that data. 
+Closure is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope. A closure lets you associate some data (the environment) with a function that operates on that data. 
 
 Use cases:
 - Use a closure anywhere that you might normally use an object with only a single method.
@@ -321,6 +321,13 @@ Host object: supplied by the host environment to complete the execution environm
 Native object: object in an ECMAScript implementation whose semantics are fully defined by this specification rather than by the host environment. For example, `Object`, `Date`, `indexOf`, `replace`...
 
 * Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
+
+`function Person(){}` is a function declaration. 
+
+`var person = Person()` assigns this function to a variable called person.
+
+`var person = new Person()` creates a new Person object and assigns it to variable person.
+
 * What's the difference between `.call` and `.apply`?
 
 They both call a function with a given `this` value and arguments. `.call` takes a list of arguments whereas `.apply` takes an array of arguments.
@@ -334,6 +341,13 @@ Creates a new function that, when called, set its `this` keyword set to the prov
 To include third party code. Since `document.write()` is always available, it is a good choice for third party vendors to use it to add their scripts.
 
 * What's the difference between feature detection, feature inference, and using the UA string?
+
+feature detection: check if a feature exists.
+
+feature inference: assume feature B exists if feature A exists.
+
+UA string: check `navigator.userAgent`, deprecated.
+
 * Explain Ajax in as much detail as possible.
 * What are the advantages and disadvantages of using Ajax?
 * Explain how JSONP works (and how it's not really Ajax).
@@ -350,7 +364,13 @@ Attribute is in the HTML itself (of type string), whereas property belongs to DO
 
 * Why is extending built-in JavaScript objects not a good idea?
 * Difference between document load event and document DOMContentLoaded event?
+
+The DOMContentLoaded event is fired when the document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading, whereas the load event can be used to detect a fully-loaded page.
+
 * What is the difference between `==` and `===`?
+
+`===` means equality without type coercion, the values in comparison must have the same type as well.
+
 * Explain the same-origin policy with regards to JavaScript.
 * Make this work:
 ```javascript
