@@ -403,6 +403,9 @@ for (var i = 0; i <= 100; i++) {
 ```
 
 * Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
+
+To avoid any conflicts of library functions or variables.
+
 * Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?
 
 It is used to detect a fully-loaded page, which means it has to wait for all stylesheets, images, and subframes to finish loading. We can use `DOMContentLoaded` to detect that the DOM has been completely loaded without having to wait for stylesheets, images, and subframes to finish loading.
@@ -419,8 +422,14 @@ It is used to detect a fully-loaded page, which means it has to wait for all sty
   * What are the pros and cons of immutability?
   * How can you achieve immutability in your own code?
 * Explain the difference between synchronous and asynchronous functions.
+
+In the context of JavaScript programming, synchronous function gets executed immediately and block everything until it's done. Asynchronous function gets enqueued to message queue and will be pushed back to call stack later on, so it does not block the program.
+
 * What is event loop?
   * What is the difference between call stack and task queue?
+
+JavaScript runtime contains an event loop, which basically dequeues a message from task queue if available and push it onto call stack when it's empty. Call stack is a stack of functions being executed, in which callback functions will be enqueued into the task queue. A message gets enqueued to task queue once an event happens, e.g., click, timer ends or get response from server, later on these messages (associated with a callback function) get picked up by event loop and pushed onto call stack.
+
 * Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`
 
 #### Testing Questions:
