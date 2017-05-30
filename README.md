@@ -137,12 +137,32 @@ A block formatting context is a part of a visual CSS rendering of a web page. it
 - the value of `position` is neither `static` nor `relative`.
 
 * What are the various clearing techniques and which is appropriate for what context?
+
+Clear an element that contains only floated elements:
+
+```css
+#container::after { 
+   content: "";
+   display: block; 
+   clear: both;
+}
+```
+
 * Explain CSS sprites, and how you would implement them on a page or site.
 * What are your favourite image replacement techniques and which do you use when?
+
+Lazy load.
+
 * How would you approach fixing browser-specific styling issues?
+
+Use a separate stylesheet that only loads when that specific browser is being used. Thankfully, the days of IE specific stylesheets are almost gone.
+
 * How do you serve your pages for feature-constrained browsers?
   * What techniques/processes do you use?
-* What are the different ways to visually hide content (and make it available only for screen readers)?
+  
+Polyfills or graceful degradation.
+
+* What are the different ways to visually hide content (and make it available only for screen readers)
 * Have you ever used a grid system, and if so, what do you prefer?
 * Have you used or implemented media queries or mobile specific layouts/CSS?
 * Are you familiar with styling SVG?
@@ -152,6 +172,9 @@ A block formatting context is a part of a visual CSS rendering of a web page. it
   * Describe what you like and dislike about the CSS preprocessors you have used.
 * How would you implement a web design comp that uses non-standard fonts?
 * Explain how a browser determines what elements match a CSS selector.
+
+Browser reads css selector from right to left. [More](https://programmerinnervoice.wordpress.com/2013/12/18/how-does-browser-read-css-selector/)
+
 * Describe pseudo-elements and discuss what they are used for.
 
 Pseudo-elements are added to selectors to style certain parts of a element. For example, ::first-line targets only the first line of an element specified by the selector.
